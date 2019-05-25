@@ -10,6 +10,12 @@ spring:
         binder:
           brokers: localhost
           defaultBrokerPort: 9092
+          transaction:
+            transactionIdPrefix: my-tr-id
+            producer:
+              configuration:
+                retries: 1
+                acks: all
 
       bindings:
         # binding name should match with topic name in the code, not in the destination
@@ -29,3 +35,6 @@ spring:
           content-type: application/xml
           consumer:
             max-attempts: 1
+
+        my-topic-user-out:
+          content-type: application/xml

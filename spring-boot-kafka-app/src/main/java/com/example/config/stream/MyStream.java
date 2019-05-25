@@ -1,6 +1,8 @@
 package com.example.config.stream;
 
 import org.springframework.cloud.stream.annotation.Input;
+import org.springframework.cloud.stream.annotation.Output;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface MyStream {
@@ -9,9 +11,11 @@ public interface MyStream {
     SubscribableChannel listenTestMessage();
 
     @Input("my-topic-user")
-    SubscribableChannel listenUserXsd();
+    SubscribableChannel listenUserXml();
 
     @Input("my-topic-group")
-    SubscribableChannel listenGroupXsd();
+    SubscribableChannel listenGroupXml();
 
+    @Output("my-topic-user-out")
+    MessageChannel produceUserXml();
 }

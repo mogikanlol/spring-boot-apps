@@ -2,12 +2,16 @@ package com.example.config.stream;
 
 import com.example.MyObject;
 import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.converter.AbstractMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.util.MimeType;
 
+import javax.xml.transform.Result;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
 public class XmlMessageConverter extends AbstractMessageConverter {
@@ -38,4 +42,16 @@ public class XmlMessageConverter extends AbstractMessageConverter {
 
         return unmarshal;
     }
+
+    @Override
+    protected Object convertToInternal(Object payload, MessageHeaders headers, Object conversionHint) {
+        StringWriter sw = new StringWriter();
+        Result result = new StreamResult(sw);
+
+        marshaller.marshal(payload, result);
+
+        return sw.toString().getBytes();
+    }
+
+
 }

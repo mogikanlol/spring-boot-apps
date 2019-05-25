@@ -39,7 +39,7 @@ public class MyTestListenerTest {
         String message = TestUtils.readResourceAsString("kafka-message/xml/user.xml");
         User expected = createUser();
 
-        stream.listenUserXsd().send(new GenericMessage<>(message));
+        stream.listenUserXml().send(new GenericMessage<>(message));
 
         verify(listener).listenUserMessage(expected);
     }
@@ -49,7 +49,7 @@ public class MyTestListenerTest {
         String message = TestUtils.readResourceAsString("kafka-message/xml/group.xml");
         Group expected = createGroup();
 
-        stream.listenGroupXsd().send(new GenericMessage<>(message));
+        stream.listenGroupXml().send(new GenericMessage<>(message));
 
         verify(listener).listenGroupMessage(expected);
     }
