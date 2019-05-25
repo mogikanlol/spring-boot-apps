@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://example.com"
+           xmlns="http://example.com"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="MyObject.xsd"/>
+    <xs:include schemaLocation="Group.xsd"/>
+    <xs:include schemaLocation="User.xsd"/>
+</xs:schema>

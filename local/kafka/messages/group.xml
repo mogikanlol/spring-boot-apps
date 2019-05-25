@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<group xmlns="http://example.com">
+    <id>1</id>
+    <userCdata>
+        <![CDATA[
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <user xmlns="http://example.com">
+            <id>1</id>
+            <name>Byron</name>
+        </user>
+        ]]>
+    </userCdata>
+</group>
