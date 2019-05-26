@@ -38,3 +38,11 @@ spring:
 
         my-topic-user-out:
           content-type: application/xml
+
+        my-topic-user-out-tr:
+          destination: my-topic-user-out
+          content-type: application/xml
+          consumer:
+            max-attempts: 1
+#            configuration:
+#              isolation.level: read_committed

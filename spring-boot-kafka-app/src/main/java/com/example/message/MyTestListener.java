@@ -29,4 +29,10 @@ public class MyTestListener {
 
         log.info("Received message = {}", message);
     }
+
+    @StreamListener("my-topic-user-out-tr")
+    public void listenTransactionalMessage(User message) {
+
+        log.info("Received message = {}", message);
+    }
 }

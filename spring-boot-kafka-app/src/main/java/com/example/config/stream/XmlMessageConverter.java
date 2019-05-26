@@ -33,8 +33,15 @@ public class XmlMessageConverter extends AbstractMessageConverter {
     @Override
     protected Object convertFromInternal(Message<?> message, Class<?> targetClass, Object conversionHint) {
         Object payload = message.getPayload();
-        String str = (String) payload;
-        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+        byte bytes[] = null;
+
+        if (payload instanceof String) {
+            String str = (String) payload;
+            bytes = str.getBytes(StandardCharsets.UTF_8);
+        } else if (payload instanceof byte[]) {
+            bytes = (byte[]) payload;
+        }
+
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Object unmarshal = marshaller.unmarshal(new StreamSource(bais));
 

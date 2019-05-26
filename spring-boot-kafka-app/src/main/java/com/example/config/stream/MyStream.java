@@ -18,4 +18,7 @@ public interface MyStream {
 
     @Output("my-topic-user-out")
     MessageChannel produceUserXml();
+
+    @Input("my-topic-user-out-tr")
+    SubscribableChannel listenTransactionalMessage();
 }
